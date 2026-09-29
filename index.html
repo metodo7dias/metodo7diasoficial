@@ -16,16 +16,16 @@ fbq('track','ViewContent');
 <!-- End Meta Pixel Code -->
 <style>
   :root{
-    --bg:#fff7f2;
-    --ink:#2a1a12;
-    --muted:#7a655a;
-    --brand:#e8562a;
-    --brand-dark:#c93f18;
-    --accent:#ff8a3d;
+    --bg:#f3faf5;
+    --ink:#173226;
+    --muted:#5b7a6a;
+    --brand:#1f9d55;
+    --brand-dark:#157a41;
+    --accent:#34c274;
     --green:#1f9d55;
     --card:#ffffff;
-    --line:#f0e2d8;
-    --shadow:0 10px 30px rgba(201,63,24,.12);
+    --line:#e0f0e6;
+    --shadow:0 10px 30px rgba(21,122,65,.12);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -44,22 +44,22 @@ fbq('track','ViewContent');
     color:#fff;font-weight:800;font-size:18px;
     padding:18px 30px;border:none;border-radius:999px;
     text-decoration:none;cursor:pointer;
-    box-shadow:0 12px 24px rgba(232,86,42,.35);
+    box-shadow:0 12px 24px rgba(31,157,85,.35);
     transition:transform .15s ease, box-shadow .15s ease;
     text-align:center;
   }
-  .btn:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(232,86,42,.45)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(31,157,85,.45)}
   .btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
   .btn-lg{font-size:20px;padding:20px 36px}
   .pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;color:var(--muted);box-shadow:0 2px 8px rgba(0,0,0,.04)}
   .section{padding:64px 0}
-  .eyebrow{color:var(--brand);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:13px;margin-bottom:12px}
+  .eyebrow{color:var(--brand);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:15px;margin-bottom:12px}
   h1,h2,h3{line-height:1.15;letter-spacing:-.02em}
   h2{font-size:34px;margin-bottom:14px}
   .center{text-align:center}
-  .muted{color:var(--muted)}
+  .muted{color:var(--muted);font-size:17px}
   /* HERO */
-  .hero{background:linear-gradient(180deg,#fff2ea,#fff7f2);padding:40px 0 56px}
+  .hero{background:linear-gradient(180deg,#eaf7ee,#f3faf5);padding:40px 0 56px}
   .hero-grid{display:flex;gap:44px;align-items:center;flex-wrap:wrap}
   .hero-col{flex:1 1 340px}
   .hero h1{font-size:48px;font-weight:900;margin:14px 0 18px}
@@ -68,48 +68,110 @@ fbq('track','ViewContent');
   .hero-cta{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
   .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
   .hero-img{position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);border:6px solid #fff}
-  .hero-img img{width:100%;height:auto;object-fit:cover;aspect-ratio:4/5;background:#f3e6dd}
+  .hero-img img{width:100%;height:auto;object-fit:cover;aspect-ratio:4/5;background:#e3f2e8}
   .float-stat{position:absolute;left:16px;bottom:16px;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:var(--shadow)}
   .float-stat b{display:block;font-size:24px;color:var(--brand)}
   .float-stat span{font-size:12px;color:var(--muted)}
-  /* PAIN */
+  /* PAIN — agora interativo (clicável) */
   .pain{background:#fff}
-  .pain-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:32px}
-  .pain-item{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;gap:12px}
-  .pain-item .x{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:#ffe1d6;color:var(--brand-dark);display:flex;align-items:center;justify-content:center;font-weight:900}
-  .pain-note{margin-top:26px;font-size:20px;font-weight:800;color:var(--brand)}
+  .pain-hint{color:var(--muted);font-size:16px;margin-top:6px}
+  .pain-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px}
+  .pain-item{
+    position:relative;background:var(--bg);border:2px solid var(--line);border-radius:16px;
+    padding:20px;display:flex;gap:12px;cursor:pointer;text-align:left;
+    transition:background .15s ease, border-color .15s ease, transform .1s ease;
+  }
+  .pain-item:active{transform:scale(.98)}
+  .pain-check{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
+  .pain-mark{
+    flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:#ffe1e1;color:#c93f3f;
+    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .pain-mark .icon-check{display:none}
+  .pain-check:checked ~ .pain-mark{background:var(--brand);color:#fff}
+  .pain-check:checked ~ .pain-mark .icon-x{display:none}
+  .pain-check:checked ~ .pain-mark .icon-check{display:inline}
+  .pain-check:checked ~ p{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line)}
+  .pain-item:has(.pain-check:checked){background:#eaf7ee;border-color:var(--brand)}
+  .pain-counter{margin-top:22px;font-size:15px;font-weight:700;color:var(--brand-dark)}
+  .pain-note{margin-top:10px;font-size:20px;font-weight:800;color:var(--brand)}
+  /* WHAT-IS */
+  .whatis{background:var(--bg)}
+  .whatis-card{max-width:760px;margin:34px auto 0;background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px;box-shadow:var(--shadow);text-align:left}
+  .whatis-card p{margin-bottom:14px;color:var(--ink)}
+  .whatis-card p:last-child{margin-bottom:0}
+  .whatis-card b{color:var(--brand-dark)}
+  .whatis-price{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;max-width:760px;margin:22px auto 0;text-align:left}
+  .whatis-price b{color:var(--brand-dark)}
   /* RESULTS */
-  .results{background:linear-gradient(180deg,#fff,#fff2ea)}
+  .results{background:linear-gradient(180deg,#fff,#eaf7ee)}
   .cards3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:34px}
   .result-card{background:var(--card);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
-  .result-card img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#f3e6dd}
+  .result-card img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#e3f2e8}
   .result-card .rc-body{padding:18px}
   .result-tag{display:inline-block;background:var(--green);color:#fff;font-weight:800;font-size:13px;padding:5px 12px;border-radius:999px;margin-bottom:10px}
   .result-card blockquote{font-size:15px;color:var(--ink);font-style:italic}
   .result-card cite{display:block;margin-top:10px;font-style:normal;font-weight:700;color:var(--muted);font-size:14px}
-  /* BENEFITS */
+  /* BENEFITS — ícones maiores e com mais contraste */
   .benefits{background:#fff}
   .benefit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:34px}
   .benefit{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:24px}
-  .benefit .ic{width:44px;height:44px;border-radius:12px;background:#ffe1d6;color:var(--brand-dark);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;margin-bottom:14px}
+  .benefit .ic{
+    width:56px;height:56px;border-radius:16px;background:#fff;color:var(--brand-dark);
+    display:flex;align-items:center;justify-content:center;font-size:30px;
+    margin-bottom:14px;border:1px solid var(--line);box-shadow:0 4px 12px rgba(21,122,65,.10);
+  }
   .benefit h3{font-size:19px;margin-bottom:8px}
   .benefit p{color:var(--muted);font-size:15px}
-  /* SOCIAL */
-  .social{background:linear-gradient(180deg,#fff2ea,#fff)}
+  /* SOCIAL — carrossel manual (setas, sem autoplay) */
+  .social{background:linear-gradient(180deg,#eaf7ee,#fff)}
   .rating{display:flex;align-items:center;gap:12px;justify-content:center;margin-top:6px;font-weight:800}
   .stars{color:#f5a623;font-size:22px;letter-spacing:2px}
-  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:34px}
-  .testi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 6px 18px rgba(0,0,0,.04)}
+  .testi-carousel{position:relative;max-width:640px;margin:34px auto 0}
+  .testi-viewport{overflow:hidden;border-radius:18px}
+  .testi-track{display:flex;transition:transform .35s ease}
+  .testi{
+    flex:0 0 100%;background:#fff;border:1px solid var(--line);border-radius:18px;
+    padding:26px;box-shadow:0 6px 18px rgba(0,0,0,.04);text-align:left;
+  }
   .testi p{font-style:italic;margin-bottom:16px}
   .testi .who{display:flex;align-items:center;gap:12px}
-  .testi .who img{width:48px;height:48px;border-radius:50%;object-fit:cover;background:#f3e6dd}
+  .testi .who img{width:48px;height:48px;border-radius:50%;object-fit:cover;background:#e3f2e8}
   .testi .who b{display:block}
   .testi .who span{font-size:13px;color:var(--green);font-weight:700}
-  /* BONUS */
+  .testi-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:42px;height:42px;border-radius:50%;border:1px solid var(--line);
+    background:#fff;color:var(--brand-dark);font-size:22px;font-weight:900;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+    box-shadow:var(--shadow);z-index:2;
+  }
+  .testi-arrow.prev{left:-14px}
+  .testi-arrow.next{right:-14px}
+  .testi-arrow:active{transform:translateY(-50%) scale(.92)}
+  .testi-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+  .testi-dot{width:8px;height:8px;border-radius:50%;background:var(--line);border:none;cursor:pointer;padding:0}
+  .testi-dot.active{background:var(--brand);width:20px;border-radius:5px;transition:width .2s ease}
+  @media(max-width:640px){
+    .testi-arrow.prev{left:2px}
+    .testi-arrow.next{right:2px}
+  }
+  /* BONUS — cards entram deslizando ao rolar a página */
   .bonus{background:#fff}
   .bonus-hl{color:var(--brand)}
   .bonus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:34px}
-  .bonus-card{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:22px;position:relative}
+  .bonus-card{
+    background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:22px;position:relative;
+    opacity:0;transform:translateX(-28px);
+    transition:opacity .5s ease, transform .5s ease;
+  }
+  .bonus-card.in-view{opacity:1;transform:translateX(0)}
+  .bonus-grid .bonus-card:nth-child(1){transition-delay:0s}
+  .bonus-grid .bonus-card:nth-child(2){transition-delay:.08s}
+  .bonus-grid .bonus-card:nth-child(3){transition-delay:.16s}
+  .bonus-grid .bonus-card:nth-child(4){transition-delay:.24s}
+  .bonus-grid .bonus-card:nth-child(5){transition-delay:.32s}
   .bonus-tag{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
   .bonus-tag .num{font-weight:800;color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.05em}
   .bonus-price{display:flex;align-items:center;gap:8px}
@@ -119,17 +181,22 @@ fbq('track','ViewContent');
   .bonus-card .resolve{font-size:14px}
   .bonus-card .resolve b{color:var(--brand-dark)}
   .bonus-card p{color:var(--muted);font-size:14px;margin-top:8px}
-  .bonus-total{margin-top:30px;background:linear-gradient(135deg,var(--brand),var(--accent));color:#fff;border-radius:22px;padding:32px;text-align:center;box-shadow:var(--shadow)}
+  .bonus-total{
+    margin-top:30px;background:linear-gradient(135deg,var(--brand),var(--accent));color:#fff;
+    border-radius:22px;padding:32px;text-align:center;box-shadow:var(--shadow);
+    opacity:0;transform:translateY(24px);transition:opacity .5s ease .38s, transform .5s ease .38s;
+  }
+  .bonus-total.in-view{opacity:1;transform:translateY(0)}
   .bonus-total .rows{max-width:420px;margin:0 auto 16px;text-align:left}
   .bonus-total .rows .r{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.25)}
   .bonus-total .big{font-size:44px;font-weight:900;margin:8px 0}
   .bonus-total .strike{text-decoration:line-through;opacity:.85}
   /* PRICE */
-  .price{background:linear-gradient(180deg,#fff,#fff2ea)}
+  .price{background:linear-gradient(180deg,#fff,#eaf7ee)}
   .price-card{max-width:560px;margin:34px auto 0;background:#fff;border:2px solid var(--brand);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
   .price-top{background:var(--brand);color:#fff;text-align:center;padding:16px;font-weight:800}
   .price-body{padding:30px}
-  .price-body img.cover{width:180px;margin:0 auto 18px;border-radius:12px;box-shadow:var(--shadow);aspect-ratio:3/4;object-fit:cover;background:#f3e6dd}
+  .price-body img.cover{width:180px;margin:0 auto 18px;border-radius:12px;box-shadow:var(--shadow);aspect-ratio:3/4;object-fit:cover;background:#e3f2e8}
   .incl{list-style:none;margin:0 0 22px}
   .incl li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:15px}
   .incl li .c{color:var(--green);font-weight:900}
@@ -145,7 +212,7 @@ fbq('track','ViewContent');
   .seal{flex:0 0 auto;width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,var(--green),#37c26f);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900;text-align:center;line-height:1.1;box-shadow:var(--shadow)}
   .seal b{font-size:30px}
   /* FAQ */
-  .faq{background:linear-gradient(180deg,#fff2ea,#fff)}
+  .faq{background:linear-gradient(180deg,#eaf7ee,#fff)}
   .faq-list{max-width:760px;margin:30px auto 0}
   details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:0;margin-bottom:12px;overflow:hidden}
   summary{cursor:pointer;padding:18px 20px;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
@@ -158,7 +225,7 @@ fbq('track','ViewContent');
   .final h2{color:#fff;font-size:38px}
   .final p{opacity:.92;max-width:620px;margin:0 auto 26px}
   /* FOOTER */
-  footer{background:#2a1a12;color:#d8c6bb;text-align:center;padding:40px 20px}
+  footer{background:#173226;color:#c9e4d3;text-align:center;padding:40px 20px}
   footer .logo{font-weight:900;font-size:22px;color:#fff;margin-bottom:16px}
   footer .logo span{color:var(--accent)}
   footer .disc{font-size:13px;max-width:680px;margin:0 auto 14px;opacity:.8}
@@ -174,10 +241,53 @@ fbq('track','ViewContent');
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     .btn{transition:none}
+    .bonus-card,.bonus-total{transition:none;opacity:1;transform:none}
+  }
+  /* COUNTDOWN BAR */
+  .countdown-bar{
+    position:sticky;top:0;z-index:50;
+    background:var(--brand-dark);color:#fff;
+    text-align:center;padding:10px 14px;
+    font-size:14px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    flex-wrap:wrap;
+  }
+  .countdown-bar .cd-label{opacity:.92}
+  .countdown-bar .cd-time{
+    font-variant-numeric:tabular-nums;
+    background:rgba(255,255,255,.15);
+    padding:3px 10px;border-radius:8px;
+    letter-spacing:.03em;
+  }
+  @media(max-width:420px){
+    .countdown-bar{font-size:12.5px;padding:8px 10px}
   }
 </style>
 </head>
 <body>
+  <!-- COUNTDOWN: oferta de R$27 válida até 23:59:59 de hoje, horário do visitante -->
+  <div class="countdown-bar">
+    <span class="cd-label">🔥 Oferta de R$27 termina hoje às 23:59 —</span>
+    <span class="cd-time" id="cd-time">--:--:--</span>
+  </div>
+  <script>
+    (function(){
+      function pad(n){ return String(n).padStart(2,'0'); }
+      function tick(){
+        var now = new Date();
+        var end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
+        var diff = end - now;
+        if (diff < 0) diff = 0;
+        var h = Math.floor(diff / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        var el = document.getElementById('cd-time');
+        if (el) el.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+  </script>
   <!-- HERO -->
   <header class="hero">
     <div class="wrap hero-grid">
@@ -201,20 +311,70 @@ fbq('track','ViewContent');
       </div>
     </div>
   </header>
-  <!-- PAIN -->
+  <!-- PAIN — interativo: a pessoa toca no que faz sentido pra ela -->
   <section class="section pain">
     <div class="wrap center">
       <div class="eyebrow">Chega de sofrer</div>
       <h2>Se você se identifica com <span style="color:var(--brand)">pelo menos um</span> destes pontos, este método é pra você</h2>
       <p class="muted" style="max-width:680px;margin:0 auto">O problema nunca foi você. Foi o método errado. Dietas restritivas e treinos impossíveis só te fazem desistir.</p>
+      <p class="pain-hint">👆 Toque nos pontos com que você se identifica</p>
       <div class="pain-list">
-        <div class="pain-item"><span class="x">✕</span><p>Você evita fotos e se esconde nas roupas largas para disfarçar o corpo.</p></div>
-        <div class="pain-item"><span class="x">✕</span><p>Já tentou mil dietas e sempre desistiu na primeira semana por serem impossíveis.</p></div>
-        <div class="pain-item"><span class="x">✕</span><p>Sente aquele desânimo ao se olhar no espelho e não reconhecer quem você é.</p></div>
-        <div class="pain-item"><span class="x">✕</span><p>Tem um evento chegando e sente que o tempo está passando rápido demais.</p></div>
-        <div class="pain-item"><span class="x">✕</span><p>Está cansada de promessas vazias que só te fazem gastar dinheiro e perder tempo.</p></div>
+        <label class="pain-item">
+          <input type="checkbox" class="pain-check" />
+          <span class="pain-mark"><span class="icon-x">✕</span><span class="icon-check">✓</span></span>
+          <p>Você evita fotos e se esconde nas roupas largas para disfarçar o corpo.</p>
+        </label>
+        <label class="pain-item">
+          <input type="checkbox" class="pain-check" />
+          <span class="pain-mark"><span class="icon-x">✕</span><span class="icon-check">✓</span></span>
+          <p>Já tentou mil dietas e sempre desistiu na primeira semana por serem impossíveis.</p>
+        </label>
+        <label class="pain-item">
+          <input type="checkbox" class="pain-check" />
+          <span class="pain-mark"><span class="icon-x">✕</span><span class="icon-check">✓</span></span>
+          <p>Sente aquele desânimo ao se olhar no espelho e não reconhecer quem você é.</p>
+        </label>
+        <label class="pain-item">
+          <input type="checkbox" class="pain-check" />
+          <span class="pain-mark"><span class="icon-x">✕</span><span class="icon-check">✓</span></span>
+          <p>Tem um evento chegando e sente que o tempo está passando rápido demais.</p>
+        </label>
+        <label class="pain-item">
+          <input type="checkbox" class="pain-check" />
+          <span class="pain-mark"><span class="icon-x">✕</span><span class="icon-check">✓</span></span>
+          <p>Está cansada de promessas vazias que só te fazem gastar dinheiro e perder tempo.</p>
+        </label>
       </div>
+      <p class="pain-counter" id="pain-counter"></p>
       <p class="pain-note">Respira. A partir de hoje, isso muda. Em apenas 7 dias.</p>
+    </div>
+  </section>
+  <script>
+    (function(){
+      var checks = document.querySelectorAll('.pain-check');
+      var counter = document.getElementById('pain-counter');
+      function update(){
+        var n = 0;
+        checks.forEach(function(c){ if (c.checked) n++; });
+        if (n === 0) { counter.textContent = ''; return; }
+        counter.textContent = 'Você se identificou com ' + n + ' de ' + checks.length + ' pontos.';
+      }
+      checks.forEach(function(c){ c.addEventListener('change', update); });
+    })();
+  </script>
+  <!-- WHAT-IS -->
+  <section class="section whatis">
+    <div class="wrap center">
+      <div class="eyebrow">Como funciona</div>
+      <h2>O que é o <span style="color:var(--brand)">Método 7 Dias</span>?</h2>
+      <div class="whatis-card">
+        <p>É um protocolo de <b>choque metabólico</b> feito com alimentos que você já tem em casa, ou que compra rapidinho na feira ou no mercado do seu bairro. Nada de suplemento caro ou fórmula difícil de achar.</p>
+        <p>Você recebe a <b>lista de compras pronta</b> e o passo a passo dos 7 dias. Não é sobre comer num horário fixo e igual pra todo mundo — é sobre a <b>ordem e a combinação certa</b> dos alimentos no seu dia, do jeito que encaixa na sua rotina. Serve pra quem acorda às 5h pra trabalhar ou só começa o dia às 9h.</p>
+        <p>Você segue o protocolo por 7 dias seguidos, do seu jeito, dentro da sua rotina, sem precisar reorganizar a vida em volta de uma dieta.</p>
+      </div>
+      <div class="whatis-price">
+        <p style="margin:0"><b>Você já gastou mais que R$27 tentando resolver isso.</b> Chá detox, aplicativo de dieta, personal, remédio de farmácia... e o resultado sempre voltou. Aqui você paga uma vez só, e seguindo os 7 dias já sente a diferença — sem mensalidade, sem depender de academia ou nutricionista.</p>
+      </div>
     </div>
   </section>
   <!-- RESULTS -->
@@ -255,7 +415,7 @@ fbq('track','ViewContent');
       </div>
     </div>
   </section>
-  <!-- BENEFITS -->
+  <!-- BENEFITS — ícones maiores em círculo branco pra destacar -->
   <section class="section benefits">
     <div class="wrap center">
       <div class="eyebrow">O que você recebe</div>
@@ -270,33 +430,67 @@ fbq('track','ViewContent');
       </div>
     </div>
   </section>
-  <!-- SOCIAL -->
+  <!-- SOCIAL — carrossel manual, sem autoplay -->
   <section class="section social">
     <div class="wrap center">
       <div class="eyebrow">Prova social</div>
       <h2>Milhares de mulheres já transformaram o corpo</h2>
       <div class="rating"><span class="stars">★★★★★</span> <span>4,9/5 · +680 mulheres</span></div>
-      <div class="testi-grid" style="text-align:left">
-        <div class="testi">
-          <p>“O que eu mais gostei é que não precisa passar fome nem comer coisa cara. Perdi quase 4 kg nesses 7 dias e quero continuar firme, meu rosto desinchou de uma forma surpreendente.”</p>
-          <div class="who"><img src="avatar2.jfif" alt="Juliana Prado" loading="lazy" /><span><b>Juliana Prado</b><span>perdeu 4kg em 7 dias</span></span></div>
+      <div class="testi-carousel">
+        <button class="testi-arrow prev" id="testi-prev" aria-label="Depoimento anterior">‹</button>
+        <div class="testi-viewport">
+          <div class="testi-track" id="testi-track">
+            <div class="testi">
+              <p>“O que eu mais gostei é que não precisa passar fome nem comer coisa cara. Perdi quase 4 kg nesses 7 dias e quero continuar firme, meu rosto desinchou de uma forma surpreendente.”</p>
+              <div class="who"><img src="avatar2.jfif" alt="Juliana Prado" loading="lazy" /><span><b>Juliana Prado</b><span>perdeu 4kg em 7 dias</span></span></div>
+            </div>
+            <div class="testi">
+              <p>“Sou mãe de 3, achei que não teria tempo. É tão simples que segui mesmo na correria. Em uma semana desinchei a barriga toda e voltei a me olhar no espelho com orgulho.”</p>
+              <div class="who"><img src="avatar1.jpeg" alt="Márcia Oliveira" loading="lazy" /><span><b>Márcia Oliveira</b><span>-4,8kg e barriga seca</span></span></div>
+            </div>
+            <div class="testi">
+              <p>“O choque metabólico é real. Já no 2º dia parei de estufar depois das refeições. Minha cintura afinou tanto que todo mundo no trabalho perguntou o que eu fiz.❤️”</p>
+              <div class="who"><img src="avatar3.jfif" alt="Beatriz Lima" loading="lazy" /><span><b>Beatriz Lima</b><span>cintura afinou em 6 dias</span></span></div>
+            </div>
+            <div class="testi">
+              <p>“Achei que na minha idade e com meu metabolismo lento seria impossível. Perdi 5kg, voltei para 2 dígitos, ganhei disposição e minha autoestima voltou. Só me arrependo de não ter começado antes.”</p>
+              <div class="who"><img src="avatar4.jfif" alt="Sônia Ribeiro" loading="lazy" /><span><b>Sônia Ribeiro</b><span>-5kg aos 52 anos</span></span></div>
+            </div>
+          </div>
         </div>
-        <div class="testi">
-          <p>“Sou mãe de 3, achei que não teria tempo. É tão simples que segui mesmo na correria. Em uma semana desinchei a barriga toda e voltei a me olhar no espelho com orgulho.”</p>
-          <div class="who"><img src="avatar1.jpeg" alt="Márcia Oliveira" loading="lazy" /><span><b>Márcia Oliveira</b><span>-4,8kg e barriga seca</span></span></div>
-        </div>
-        <div class="testi">
-          <p>“O choque metabólico é real. Já no 2º dia parei de estufar depois das refeições. Minha cintura afinou tanto que todo mundo no trabalho perguntou o que eu fiz.❤️”</p>
-          <div class="who"><img src="avatar3.jfif" alt="Beatriz Lima" loading="lazy" /><span><b>Beatriz Lima</b><span>cintura afinou em 6 dias</span></span></div>
-        </div>
-        <div class="testi">
-          <p>“Achei que na minha idade e com meu metabolismo lento seria impossível. Perdi 5kg, voltei para 2 dígitos, ganhei disposição e minha autoestima voltou. Só me arrependo de não ter começado antes.”</p>
-          <div class="who"><img src="avatar4.jfif" alt="Sônia Ribeiro" loading="lazy" /><span><b>Sônia Ribeiro</b><span>-5kg aos 52 anos</span></span></div>
-        </div>
+        <button class="testi-arrow next" id="testi-next" aria-label="Próximo depoimento">›</button>
       </div>
+      <div class="testi-dots" id="testi-dots"></div>
     </div>
   </section>
-  <!-- BONUS -->
+  <script>
+    (function(){
+      var track = document.getElementById('testi-track');
+      var slides = track.children.length;
+      var dotsWrap = document.getElementById('testi-dots');
+      var index = 0;
+      for (var i = 0; i < slides; i++) {
+        var d = document.createElement('button');
+        d.className = 'testi-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Ir para depoimento ' + (i + 1));
+        d.addEventListener('click', function(idx){ return function(){ goTo(idx); }; }(i));
+        dotsWrap.appendChild(d);
+      }
+      function render(){
+        track.style.transform = 'translateX(-' + (index * 100) + '%)';
+        var dots = dotsWrap.querySelectorAll('.testi-dot');
+        dots.forEach(function(d, i){ d.classList.toggle('active', i === index); });
+      }
+      function goTo(i){
+        index = (i + slides) % slides;
+        render();
+      }
+      document.getElementById('testi-prev').addEventListener('click', function(){ goTo(index - 1); });
+      document.getElementById('testi-next').addEventListener('click', function(){ goTo(index + 1); });
+      render();
+    })();
+  </script>
+  <!-- BONUS — cards deslizam pra dentro ao aparecer na tela -->
   <section class="section bonus">
     <div class="wrap center">
       <div class="eyebrow">Bônus exclusivos de hoje</div>
@@ -346,6 +540,24 @@ fbq('track','ViewContent');
       </div>
     </div>
   </section>
+  <script>
+    (function(){
+      var targets = document.querySelectorAll('.bonus-card, .bonus-total');
+      if (!('IntersectionObserver' in window)) {
+        targets.forEach(function(t){ t.classList.add('in-view'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      targets.forEach(function(t){ io.observe(t); });
+    })();
+  </script>
   <!-- PRICE -->
   <section class="section price" id="comprar">
     <div class="wrap center">
