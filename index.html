@@ -96,6 +96,13 @@ fbq('track','ViewContent');
   .pain-item:has(.pain-check:checked){background:#eaf7ee;border-color:var(--brand)}
   .pain-counter{margin-top:22px;font-size:15px;font-weight:700;color:var(--brand-dark)}
   .pain-note{margin-top:10px;font-size:20px;font-weight:800;color:var(--brand)}
+  /* VIDEO */
+  .video-frame{
+    max-width:380px;margin:24px auto 0;border-radius:22px;overflow:hidden;
+    box-shadow:var(--shadow);border:6px solid #fff;background:#000;
+    position:relative;aspect-ratio:9/16;
+  }
+  .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   /* WHAT-IS */
   .whatis{background:var(--bg)}
   .whatis-card{max-width:760px;margin:34px auto 0;background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px;box-shadow:var(--shadow);text-align:left}
@@ -160,11 +167,12 @@ fbq('track','ViewContent');
   /* BONUS — cards entram deslizando ao rolar a página */
   .bonus{background:#fff}
   .bonus-hl{color:var(--brand)}
-  .bonus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:34px}
+  .bonus-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin-top:34px}
   .bonus-card{
     background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:22px;position:relative;
     opacity:0;transform:translateX(-28px);
     transition:opacity .5s ease, transform .5s ease;
+    flex:1 1 280px;max-width:320px;
   }
   .bonus-card.in-view{opacity:1;transform:translateX(0)}
   .bonus-grid .bonus-card:nth-child(1){transition-delay:0s}
@@ -317,7 +325,7 @@ fbq('track','ViewContent');
       <div class="eyebrow">Chega de sofrer</div>
       <h2>Se você se identifica com <span style="color:var(--brand)">pelo menos um</span> destes pontos, este método é pra você</h2>
       <p class="muted" style="max-width:680px;margin:0 auto">O problema nunca foi você. Foi o método errado. Dietas restritivas e treinos impossíveis só te fazem desistir.</p>
-      <p class="pain-hint">👇 Toque nos pontos com que você se identifica</p>
+      <p class="pain-hint">👆 Toque nos pontos com que você se identifica</p>
       <div class="pain-list">
         <label class="pain-item">
           <input type="checkbox" class="pain-check" />
@@ -371,6 +379,9 @@ fbq('track','ViewContent');
         <p>É um protocolo de <b>choque metabólico</b> feito com alimentos que você já tem em casa, ou que compra rapidinho na feira ou no mercado do seu bairro. Nada de suplemento caro ou fórmula difícil de achar.</p>
         <p>Você recebe a <b>lista de compras pronta</b> e o passo a passo dos 7 dias. Não é sobre comer num horário fixo e igual pra todo mundo — é sobre a <b>ordem e a combinação certa</b> dos alimentos no seu dia, do jeito que encaixa na sua rotina. Serve pra quem acorda às 5h pra trabalhar ou só começa o dia às 9h.</p>
         <p>Você segue o protocolo por 7 dias seguidos, do seu jeito, dentro da sua rotina, sem precisar reorganizar a vida em volta de uma dieta.</p>
+      </div>
+      <div class="video-frame">
+        <iframe src="https://player.vimeo.com/video/1231489346" title="Método 7 Dias" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
       </div>
       <div class="whatis-price">
         <p style="margin:0"><b>Você já gastou mais que R$27 tentando resolver isso.</b> Chá detox, aplicativo de dieta, personal, remédio de farmácia... e o resultado sempre voltou. Aqui você paga uma vez só, e seguindo os 7 dias já sente a diferença — sem mensalidade, sem depender de academia ou nutricionista.</p>
@@ -494,35 +505,35 @@ fbq('track','ViewContent');
   <section class="section bonus">
     <div class="wrap center">
       <div class="eyebrow">Bônus exclusivos de hoje</div>
-      <h2>Leve <span class="bonus-hl">5 bônus</span> que sozinhos valem R$ 435,00</h2>
+      <h2>Leve <span class="bonus-hl">5 bônus</span> que sozinhos valem R$ 137,50</h2>
       <p class="muted" style="max-width:720px;margin:0 auto">Cada bônus resolve um medo real de quem quer emagrecer rápido! Pele firme, rosto definido, corpo tonificado e resultado que não volta. Hoje, todos entram de graça na sua compra.</p>
       <div class="bonus-grid" style="text-align:left">
         <div class="bonus-card">
-          <div class="bonus-tag"><span class="num">Bônus #1</span><span class="bonus-price"><span class="old">R$ 97,00</span><span class="free">GRÁTIS</span></span></div>
+          <div class="bonus-tag"><span class="num">Bônus #1</span><span class="bonus-price"><span class="old">R$ 29,90</span><span class="free">GRÁTIS</span></span></div>
           <h3>Protocolo Pele Firme</h3>
           <p class="resolve"><b>Resolve:</b> O medo de ficar com a pele flácida, murcha ou pendurada depois de eliminar peso rápido.</p>
           <p>Guia com os nutrientes essenciais, truques de hidratação e rotinas diárias para a pele acompanhar a queima de gordura, tonificada, elástica e firme.</p>
         </div>
         <div class="bonus-card">
-          <div class="bonus-tag"><span class="num">Bônus #2</span><span class="bonus-price"><span class="old">R$ 77,00</span><span class="free">GRÁTIS</span></span></div>
+          <div class="bonus-tag"><span class="num">Bônus #2</span><span class="bonus-price"><span class="old">R$ 24,90</span><span class="free">GRÁTIS</span></span></div>
           <h3>O Desafio Zero Papada</h3>
           <p class="resolve"><b>Resolve:</b> O inchaço facial e a gordura no rosto que incomodam nas fotos e no espelho.</p>
           <p>Massagens faciais de 3 minutos e manobras de drenagem linfática para desinchar o rosto, definir o contorno e eliminar a papada já na primeira semana.</p>
         </div>
         <div class="bonus-card">
-          <div class="bonus-tag"><span class="num">Bônus #3</span><span class="bonus-price"><span class="old">R$ 87,00</span><span class="free">GRÁTIS</span></span></div>
+          <div class="bonus-tag"><span class="num">Bônus #3</span><span class="bonus-price"><span class="old">R$ 27,90</span><span class="free">GRÁTIS</span></span></div>
           <h3>Protocolo Glúteos na Prática</h3>
           <p class="resolve"><b>Resolve:</b> O medo de perder massa muscular e ficar com o bumbum caído ou sem forma ao emagrecer.</p>
           <p>Movimentos e estímulos localizados para tonificar, levantar e enrijecer o glúteo, combatendo a flacidez em uma das áreas mais desejadas.</p>
         </div>
         <div class="bonus-card">
-          <div class="bonus-tag"><span class="num">Bônus #4</span><span class="bonus-price"><span class="old">R$ 97,00</span><span class="free">GRÁTIS</span></span></div>
-          <h3>Cardápio dos 7 Dias + Lista de Compras</h3>
+          <div class="bonus-tag"><span class="num">Bônus #4</span><span class="bonus-price"><span class="old">R$ 29,90</span><span class="free">GRÁTIS</span></span></div>
+          <h3>Cardápio 7 Dias + Lista de Compras</h3>
           <p class="resolve"><b>Resolve:</b> A ansiedade de não saber o que comer e o gasto excessivo com ingredientes caros.</p>
           <p>Cronograma alimentar completo para cada um dos 7 dias, com lista de supermercado inteligente: ingredientes simples, baratos e fáceis de achar.</p>
         </div>
         <div class="bonus-card">
-          <div class="bonus-tag"><span class="num">Bônus #5</span><span class="bonus-price"><span class="old">R$ 77,00</span><span class="free">GRÁTIS</span></span></div>
+          <div class="bonus-tag"><span class="num">Bônus #5</span><span class="bonus-price"><span class="old">R$ 24,90</span><span class="free">GRÁTIS</span></span></div>
           <h3>Manual Anti-Efeito Sanfona</h3>
           <p class="resolve"><b>Resolve:</b> O pânico de recuperar todo o peso perdido assim que terminar o desafio de 7 dias.</p>
           <p>Estratégias mentais, truques comportamentais e o plano de manutenção para estabilizar o novo peso e manter os resultados a longo prazo, sem sofrimento.</p>
@@ -530,10 +541,10 @@ fbq('track','ViewContent');
       </div>
       <div class="bonus-total">
         <div class="rows">
-          <div class="r"><span>Método 7 Dias completo</span><span>R$ 97,00</span></div>
-          <div class="r"><span>5 bônus exclusivos</span><span>R$ 435,00</span></div>
+          <div class="r"><span>Método 7 Dias completo</span><span>R$ 100,00</span></div>
+          <div class="r"><span>5 bônus exclusivos</span><span>R$ 137,50</span></div>
         </div>
-        <div>Valor total real: <span class="strike">R$ 532,00</span></div>
+        <div>Valor total real: <span class="strike">R$ 237,50</span></div>
         <div class="big">Hoje você leva tudo por apenas R$ 27,00</div>
         <a href="https://pay.kiwify.com.br/LJgqX6m" class="btn btn-lg" data-cta="comprar" style="background:#fff;color:var(--brand)">Quero os 5 bônus grátis</a>
         <p style="margin-top:12px;font-size:14px;opacity:.9">Bônus são liberados automaticamente.</p>
@@ -563,9 +574,9 @@ fbq('track','ViewContent');
     <div class="wrap center">
       <div class="eyebrow">Oferta por tempo limitado</div>
       <h2>Comece a secar hoje por menos que um lanche</h2>
-      <p class="muted">72% de desconto só nas próximas horas · + 5 bônus exclusivos inclusos hoje</p>
+      <p class="muted">73% de desconto só nas próximas horas · + 5 bônus exclusivos inclusos hoje</p>
       <div class="price-card">
-        <div class="price-top">OFERTA ESPECIAL — 🔥72% OFF</div>
+        <div class="price-top">OFERTA ESPECIAL — 🔥73% OFF</div>
         <div class="price-body">
           <img class="cover" src="capaprod.jpeg" alt="Capa do e-book Método 7 Dias" loading="lazy" />
           <ul class="incl">
@@ -578,7 +589,7 @@ fbq('track','ViewContent');
             <li><span class="c">✔</span> Acesso imediato e vitalício</li>
           </ul>
           <div class="price-amt">
-            <div class="from">De R$ 97,00 por apenas</div>
+            <div class="from">De R$ 100,00 por apenas</div>
             <div class="now">R$ 27<sup>,00</sup></div>
             <div class="inst">à vista ou 3x de R$ 9,64 no cartão</div>
           </div>
