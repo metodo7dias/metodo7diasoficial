@@ -1,4 +1,4 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
@@ -25,6 +25,7 @@ fbq('track','ViewContent');
     --card:#ffffff;
     --line:#e0f0e6;
     --shadow:0 10px 30px rgba(21,122,65,.12);
+    --warn:#c93f18;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{
@@ -36,7 +37,6 @@ fbq('track','ViewContent');
   .center{text-align:center}
   .muted{color:var(--muted);font-size:16px}
 
-  /* COUNTDOWN — sem mencionar o preço ainda */
   .countdown-bar{
     position:sticky;top:0;z-index:50;background:var(--brand-dark);color:#fff;
     text-align:center;padding:10px 14px;font-size:14px;font-weight:700;
@@ -44,12 +44,10 @@ fbq('track','ViewContent');
   }
   .countdown-bar .cd-time{font-variant-numeric:tabular-nums;background:rgba(255,255,255,.15);padding:3px 10px;border-radius:8px}
 
-  /* HEADER */
   .top{padding:28px 0 10px}
   .top h1{font-size:26px;font-weight:900;line-height:1.25;margin-bottom:8px}
   .top h1 .hl{color:var(--brand)}
 
-  /* VIDEO */
   .video-frame{
     max-width:380px;margin:20px auto 0;border-radius:22px;overflow:hidden;
     box-shadow:var(--shadow);border:6px solid #fff;background:#000;
@@ -57,31 +55,41 @@ fbq('track','ViewContent');
   }
   .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
-  /* BLOCO QUE ABRE QUANDO O VÍDEO TERMINA */
-  .reveal-block{
-    max-height:0;overflow:hidden;
-    transition:max-height .6s ease;
-  }
-  .reveal-block.open{max-height:3000px}
+  .reveal-block{max-height:0;overflow:hidden;transition:max-height .6s ease}
+  .reveal-block.open{max-height:4000px}
 
   .bonus-mini{padding:26px 0 6px}
   .bonus-mini .eyebrow{color:var(--brand);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:14px;margin-bottom:6px}
   .bonus-mini h2{font-size:22px;margin-bottom:4px}
+  .bonus-mini .hint{font-size:13px;color:var(--muted);margin-top:2px}
   .bonus-slide-grid{display:flex;flex-direction:column;gap:12px;margin-top:18px}
   .bonus-row{display:flex;gap:12px}
+
+  /* Cards de bônus — animação mais viva (bounce) + clicável pra expandir */
   .bonus-slide{
     flex:1 1 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;text-align:left;
-    box-shadow:0 6px 16px rgba(0,0,0,.05);
-    opacity:0;transition:opacity .5s ease, transform .5s ease;
+    box-shadow:0 6px 16px rgba(0,0,0,.05);cursor:pointer;
+    opacity:0;transform:translateX(-60px) scale(.85) rotate(-3deg);
+    transition:opacity .55s ease, transform .6s cubic-bezier(.34,1.56,.64,1), box-shadow .2s ease;
   }
-  .bonus-slide.from-left{transform:translateX(-60px)}
-  .bonus-slide.from-right{transform:translateX(60px)}
-  .bonus-slide.in{opacity:1;transform:translateX(0)}
+  .bonus-slide.from-right{transform:translateX(60px) scale(.85) rotate(3deg)}
+  .bonus-slide.in{opacity:1;transform:translateX(0) scale(1) rotate(0)}
+  .bonus-slide:active{transform:scale(.97)}
+  .bonus-slide.expanded{box-shadow:0 10px 22px rgba(21,122,65,.18);border-color:var(--brand)}
   .bonus-slide .num{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
-  .bonus-slide h3{font-size:14.5px;margin:4px 0 4px}
+  .bonus-slide h3{font-size:14.5px;margin:4px 0 4px;display:flex;align-items:center;justify-content:space-between;gap:6px}
+  .bonus-slide h3 .chevron{font-size:12px;color:var(--brand);transition:transform .25s ease;flex:0 0 auto}
+  .bonus-slide.expanded h3 .chevron{transform:rotate(180deg)}
   .bonus-slide .price{display:flex;gap:6px;align-items:center;margin-top:4px}
   .bonus-slide .old{font-size:12px;color:var(--muted);text-decoration:line-through}
   .bonus-slide .free{font-size:11px;font-weight:800;color:#fff;background:var(--green);padding:2px 8px;border-radius:999px}
+  .bonus-desc{
+    max-height:0;overflow:hidden;transition:max-height .35s ease, margin-top .35s ease;
+    font-size:12.5px;color:var(--muted);line-height:1.5;
+  }
+  .bonus-slide.expanded .bonus-desc{max-height:200px;margin-top:8px}
+  .bonus-tap-hint{font-size:10.5px;color:var(--brand);font-weight:700;margin-top:6px}
+
   .bonus-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
   .bonus-dot{width:9px;height:9px;border-radius:50%;background:var(--line);transition:background .25s ease, transform .25s ease}
   .bonus-dot.lit{background:var(--brand);transform:scale(1.15)}
@@ -89,24 +97,40 @@ fbq('track','ViewContent');
   .bonus-total-mini{
     margin:22px auto 0;max-width:380px;background:linear-gradient(135deg,var(--brand),var(--accent));color:#fff;
     border-radius:20px;padding:24px;text-align:center;box-shadow:var(--shadow);
-    opacity:0;transform:translateY(18px);transition:opacity .5s ease, transform .5s ease;
+    opacity:0;transform:translateY(18px) scale(.92);
+    transition:opacity .5s ease, transform .5s cubic-bezier(.34,1.56,.64,1);
   }
-  .bonus-total-mini.in{opacity:1;transform:translateY(0)}
+  .bonus-total-mini.in{opacity:1;transform:translateY(0) scale(1)}
   .bonus-total-mini .strike{text-decoration:line-through;opacity:.85;font-size:14px}
   .bonus-total-mini .big{font-size:34px;font-weight:900;margin:6px 0}
 
-  /* CTA — só existe depois da revelação */
-  .cta-wrap{max-width:380px;margin:18px auto 34px;min-height:10px}
+  .cta-wrap{max-width:380px;margin:18px auto 0;min-height:10px}
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;
     background:linear-gradient(180deg,var(--accent),var(--brand));color:#fff;font-weight:800;font-size:19px;
     padding:19px 26px;border:none;border-radius:999px;text-decoration:none;cursor:pointer;
     box-shadow:0 12px 24px rgba(31,157,85,.35);
-    opacity:0;transform:translateY(14px);transition:opacity .5s ease, transform .5s ease;
+    opacity:0;transform:translateY(14px) scale(.95);
+    transition:opacity .5s ease, transform .5s cubic-bezier(.34,1.56,.64,1);
   }
-  .btn.in{opacity:1;transform:translateY(0)}
+  .btn.in{opacity:1;transform:translateY(0) scale(1)}
 
-  /* DEPOIMENTOS — sempre visíveis, nunca somem */
+  /* Bloco de vagas, logo abaixo do CTA */
+  .vagas-badge{
+    max-width:380px;margin:14px auto 34px;text-align:center;
+    background:#fff3ea;border:1.5px solid #f3b088;color:var(--warn);
+    border-radius:14px;padding:12px 16px;font-size:14px;font-weight:800;
+    opacity:0;transform:translateY(10px);transition:opacity .5s ease, transform .5s ease;
+  }
+  .vagas-badge.in{opacity:1;transform:translateY(0);animation:pulse 1.8s ease-in-out 1}
+  .vagas-badge .n{font-size:17px}
+  @keyframes pulse{
+    0%{transform:scale(1)}
+    30%{transform:scale(1.04)}
+    60%{transform:scale(.99)}
+    100%{transform:scale(1)}
+  }
+
   .section{padding:44px 0}
   .eyebrow{color:var(--brand);font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:15px;margin-bottom:10px}
   h2{font-size:26px;margin-bottom:10px;line-height:1.2}
@@ -124,7 +148,13 @@ fbq('track','ViewContent');
   .comment-card .name{font-weight:800;font-size:14.5px}
   .comment-card .time{font-size:12px;color:var(--muted);margin-left:6px;font-weight:400}
   .comment-card p{font-size:14.5px;margin-top:4px;color:var(--ink)}
-  .comment-card .likes{font-size:12.5px;color:var(--muted);margin-top:6px;display:flex;gap:14px}
+  .comment-card .likes{font-size:12.5px;color:var(--muted);margin-top:6px;display:flex;gap:14px;align-items:center}
+  .like-btn{
+    display:inline-flex;align-items:center;gap:5px;cursor:pointer;user-select:none;
+    padding:4px 8px;border-radius:999px;transition:background .15s ease, color .15s ease;border:1px solid transparent;
+  }
+  .like-btn:active{transform:scale(.95)}
+  .like-btn.liked{color:var(--brand-dark);background:#eaf7ee;border-color:var(--line);font-weight:800}
 
   footer{background:#173226;color:#c9e4d3;text-align:center;padding:32px 20px;font-size:13px}
   footer .disc{max-width:600px;margin:0 auto 10px;opacity:.8}
@@ -157,42 +187,53 @@ fbq('track','ViewContent');
     <iframe id="vsl-player" src="https://player.vimeo.com/video/1231489346" title="Método 7 Dias" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
   </div>
 
-  <!-- Bloco que abre quando o vídeo termina: bônus em slide alternado + preço + CTA -->
+  <!-- Bloco que abre quando o vídeo termina: bônus em slide alternado + preço + vagas + CTA -->
   <div class="reveal-block" id="reveal-block">
     <div class="wrap bonus-mini center">
       <div class="eyebrow">Chegou a hora</div>
       <h2>Seus <span style="color:var(--brand)">5 bônus</span> liberados</h2>
+      <p class="hint">👆 Toque em cada bônus pra ver o que vem dentro</p>
 
       <div class="bonus-slide-grid" id="bonus-grid">
         <div class="bonus-row">
           <div class="bonus-slide from-left" data-bonus="1">
             <div class="num">Bônus #1</div>
-            <h3>Protocolo Pele Firme</h3>
+            <h3>Protocolo Pele Firme <span class="chevron">▾</span></h3>
             <div class="price"><span class="old">R$ 27,00</span><span class="free">GRÁTIS</span></div>
+            <div class="bonus-desc">Guia com os nutrientes essenciais, truques de hidratação e rotinas diárias pra a pele acompanhar a queima de gordura, firme e elástica.</div>
+            <div class="bonus-tap-hint">toque pra ver mais</div>
           </div>
           <div class="bonus-slide from-right" data-bonus="2">
             <div class="num">Bônus #2</div>
-            <h3>Desafio Zero Papada</h3>
+            <h3>Desafio Zero Papada <span class="chevron">▾</span></h3>
             <div class="price"><span class="old">R$ 19,00</span><span class="free">GRÁTIS</span></div>
+            <div class="bonus-desc">Massagens faciais de 3 minutos e drenagem linfática pra desinchar o rosto e definir o contorno já na primeira semana.</div>
+            <div class="bonus-tap-hint">toque pra ver mais</div>
           </div>
         </div>
         <div class="bonus-row">
           <div class="bonus-slide from-left" data-bonus="3">
             <div class="num">Bônus #3</div>
-            <h3>Glúteos na Prática</h3>
+            <h3>Glúteos na Prática <span class="chevron">▾</span></h3>
             <div class="price"><span class="old">R$ 23,00</span><span class="free">GRÁTIS</span></div>
+            <div class="bonus-desc">Movimentos localizados pra tonificar e levantar o glúteo, combatendo a flacidez ao emagrecer.</div>
+            <div class="bonus-tap-hint">toque pra ver mais</div>
           </div>
           <div class="bonus-slide from-right" data-bonus="4">
             <div class="num">Bônus #4</div>
-            <h3>Cardápio 7 Dias + Lista</h3>
+            <h3>Cardápio 7 Dias + Lista <span class="chevron">▾</span></h3>
             <div class="price"><span class="old">R$ 17,00</span><span class="free">GRÁTIS</span></div>
+            <div class="bonus-desc">Cronograma alimentar completo dos 7 dias, com lista de compras simples e barata, fácil de achar no mercado.</div>
+            <div class="bonus-tap-hint">toque pra ver mais</div>
           </div>
         </div>
         <div class="bonus-row" style="max-width:calc(50% - 6px);margin:0 auto">
           <div class="bonus-slide from-left" data-bonus="5" style="flex:1 1 100%">
             <div class="num">Bônus #5</div>
-            <h3>Manual Anti-Efeito Sanfona</h3>
+            <h3>Manual Anti-Efeito Sanfona <span class="chevron">▾</span></h3>
             <div class="price"><span class="old">R$ 14,00</span><span class="free">GRÁTIS</span></div>
+            <div class="bonus-desc">Estratégias e plano de manutenção pra estabilizar o peso novo e manter o resultado, sem sofrimento.</div>
+            <div class="bonus-tap-hint">toque pra ver mais</div>
           </div>
         </div>
       </div>
@@ -210,6 +251,10 @@ fbq('track','ViewContent');
       <div class="cta-wrap">
         <a href="https://pay.kiwify.com.br/LJgqX6m" id="cta-btn" class="btn" data-cta="comprar">Quero garantir por R$27</a>
       </div>
+
+      <div class="vagas-badge" id="vagas-badge">
+        🔥 Valor promocional para as próximas <span class="n" id="vagas-n">14</span> alunas
+      </div>
     </div>
   </div>
 
@@ -222,6 +267,7 @@ fbq('track','ViewContent');
       var dots = Array.prototype.slice.call(document.querySelectorAll('.bonus-dot'));
       var totalCard = document.getElementById('bonus-total');
       var ctaBtn = document.getElementById('cta-btn');
+      var vagasBadge = document.getElementById('vagas-badge');
       var triggered = false;
 
       function playSequence(){
@@ -239,9 +285,9 @@ fbq('track','ViewContent');
         var afterSlides = slides.length * 220 + 300;
         setTimeout(function(){ totalCard.classList.add('in'); }, afterSlides);
         setTimeout(function(){ ctaBtn.classList.add('in'); }, afterSlides + 400);
+        setTimeout(function(){ vagasBadge.classList.add('in'); }, afterSlides + 700);
       }
 
-      // Fallback: se a API do player falhar, dispara a sequência mesmo assim após 90s
       var fallbackTimer = setTimeout(playSequence, 90000);
 
       try {
@@ -257,13 +303,18 @@ fbq('track','ViewContent');
           clearTimeout(fallbackTimer);
           playSequence();
         });
-      } catch (e) {
-        // mantém o fallback de 90s
-      }
+      } catch (e) {}
+
+      // Bônus clicável: toque expande/recolhe a explicação
+      slides.forEach(function(slide){
+        slide.addEventListener('click', function(){
+          slide.classList.toggle('expanded');
+        });
+      });
     })();
   </script>
 
-  <!-- DEPOIMENTOS — ficam sempre visíveis, do jeito que já estava -->
+  <!-- DEPOIMENTOS — ficam sempre visíveis -->
   <section class="section">
     <div class="wrap center">
       <div class="eyebrow">Resultados reais</div>
@@ -295,7 +346,10 @@ fbq('track','ViewContent');
         <div>
           <span class="name">Juliana Prado</span><span class="time">· 2d</span>
           <p>Perdi quase 4kg nesses 7 dias e nem precisei passar fome. Meu rosto desinchou de um jeito que ninguém acreditou 😍</p>
-          <div class="likes"><span>👍 38</span><span>Responder</span></div>
+          <div class="likes">
+            <span class="like-btn" data-count="38">👍 <span class="like-n">38</span></span>
+            <span>Responder</span>
+          </div>
         </div>
       </div>
       <div class="comment-card">
@@ -303,15 +357,21 @@ fbq('track','ViewContent');
         <div>
           <span class="name">Márcia Oliveira</span><span class="time">· 4d</span>
           <p>Sou mãe de 3, achei que não teria tempo pra nada. Em uma semana já desinchei a barriga toda 🙏</p>
-          <div class="likes"><span>👍 27</span><span>Responder</span></div>
+          <div class="likes">
+            <span class="like-btn" data-count="27">👍 <span class="like-n">27</span></span>
+            <span>Responder</span>
+          </div>
         </div>
       </div>
       <div class="comment-card">
         <img src="avatar3.jfif" alt="Beatriz Lima" loading="lazy" />
         <div>
           <span class="name">Beatriz Lima</span><span class="time">· 5d</span>
-          <p>O choque metabólico é real mesmo. Minha cintura afinou tanto que perguntaram o que eu tinha feito ❤</p>
-          <div class="likes"><span>👍 19</span><span>Responder</span></div>
+          <p>O choque metabólico é real mesmo. Minha cintura afinou tanto que perguntaram o que eu tinha feito ❤️</p>
+          <div class="likes">
+            <span class="like-btn" data-count="19">👍 <span class="like-n">19</span></span>
+            <span>Responder</span>
+          </div>
         </div>
       </div>
       <div class="comment-card">
@@ -319,11 +379,27 @@ fbq('track','ViewContent');
         <div>
           <span class="name">Sônia Ribeiro</span><span class="time">· 6d</span>
           <p>Achei que na minha idade seria impossível. Perdi 5kg e só me arrependo de não ter começado antes.</p>
-          <div class="likes"><span>👍 44</span><span>Responder</span></div>
+          <div class="likes">
+            <span class="like-btn" data-count="44">👍 <span class="like-n">44</span></span>
+            <span>Responder</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    (function(){
+      document.querySelectorAll('.like-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var numEl = btn.querySelector('.like-n');
+          var liked = btn.classList.toggle('liked');
+          var base = parseInt(btn.getAttribute('data-count'), 10);
+          numEl.textContent = liked ? (base + 1) : base;
+        });
+      });
+    })();
+  </script>
 
   <footer>
     <p class="disc">Método 7 Dias · Os resultados podem variar de pessoa para pessoa.</p>
