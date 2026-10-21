@@ -1,131 +1,261 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Protocolo Musa Infinita - ULTIMO DIA</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#5B21B6">
+<title>Protocolo Musa Infinita | Oferta Black Friday</title>
+<meta name="description" content="Aprenda a criar a sua própria musa com IA no Gemini, direto do celular.">
 <script>
-// CONFIGURE AQUI - TROQUE PELOS SEUS LINKS REAIS
-const CONFIG = {
-  PIXEL_ID: 'LINK_DO_PIXEL_AQUI - ex: 1234567890',
-  GITHUB_IMAGES_BASE: 'LINK_DA_GITHUB_AQUI - ex: https://raw.githubusercontent.com/seuuser/repo/main/',
-  VIMEO_VIDEO_LINK: 'LINK_DA_VIMEO_AQUI - ex: https://player.vimeo.com/video/123456'
+/* ===== CONFIGURE AQUI: troque só o que está entre aspas ===== */
+const CONFIG={
+CHECKOUT:"COLE_AQUI_O_LINK_DO_CHECKOUT_KIWIFY",
+PIXEL_META:"COLE_AQUI_O_ID_DO_PIXEL_DA_META",
+PIXEL_UTMIFY:"COLE_AQUI_O_ID_DO_PIXEL_DA_UTMIFY",
+FIM_OFERTA:"2026-11-27T23:59:59-03:00",
+VIDEO:"COLE_AQUI_O_LINK_DO_VIDEO_MP4",
+FOTO_HERO:"COLE_AQUI_O_LINK_DA_FOTO",
+DEPO_1:"COLE_AQUI_O_LINK_DO_PRINT_1",
+DEPO_2:"COLE_AQUI_O_LINK_DO_PRINT_2",
+DEPO_3:"COLE_AQUI_O_LINK_DO_PRINT_3",
+DEPO_4:"COLE_AQUI_O_LINK_DO_PRINT_4",
+DEPO_5:"COLE_AQUI_O_LINK_DO_PRINT_5"
 };
+/* ===== FIM DA CONFIGURAÇÃO ===== */
+document.documentElement.className='js';
 </script>
-<!-- COLE SEU CODIGO DO PIXEL AQUI - SUBSTITUA LINK_DO_PIXEL_AQUI -->
-<!-- Pixel vai aqui -->
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:#0F0F12;color:#fff;overflow-x:hidden;padding-bottom:70px}
-.urgency-bar{background:linear-gradient(90deg,#9333EA,#A855F7,#EC4899,#A855F7);background-size:300% 100%;animation:gm 3s ease infinite;color:#fff;text-align:center;padding:11px 12px;font-weight:800;font-size:13px;letter-spacing:.04em;position:sticky;top:0;z-index:100;display:flex;justify-content:center;gap:10px;box-shadow:0 0 30px rgba(168,85,247,.5)}
-@keyframes gm{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.timer-wrap{background:#18181B;border-bottom:1px solid rgba(168,85,247,.2);padding:10px;display:flex;justify-content:center;align-items:center;gap:12px;position:sticky;top:41px;z-index:99;backdrop-filter:blur(10px)}
-.timer{display:flex;gap:6px}
-.timer-box{background:#0F0F12;border:1px solid rgba(168,85,247,.3);border-radius:10px;min-width:54px;padding:6px 8px;text-align:center}
-.timer-box b{display:block;font-size:20px;font-weight:900;line-height:1}
-.reveal{opacity:0;transform:translateY(40px) scale(.98);transition:all .8s cubic-bezier(0.16,1,0.3,1)}
-.reveal.active{opacity:1;transform:translateY(0) scale(1)}
-.reveal-left{opacity:0;transform:translateX(-50px);transition:all .8s}
-.reveal-left.active{opacity:1;transform:translateX(0)}
-.reveal-right{opacity:0;transform:translateX(50px);transition:all .8s}
-.reveal-right.active{opacity:1;transform:translateX(0)}
-.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
-.bonus-card{background:linear-gradient(145deg,#1a1a1e,#18181B);border:1px solid rgba(168,85,247,.25);border-radius:24px;padding:28px;position:relative;overflow:hidden;transition:all .4s ease}
-.bonus-card:hover{transform:translateY(-6px) scale(1.01);border-color:rgba(168,85,247,.5);box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(168,85,247,.2)}
-.bonus-badge{background:linear-gradient(90deg,#A855F7,#EC4899);color:#fff;font-size:10px;font-weight:800;letter-spacing:.15em;padding:5px 12px;border-radius:999px;display:inline-block;margin-bottom:14px}
-.bonus-value{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);color:#6EE7B7;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px}
-.cta-button{background:linear-gradient(96deg,#9333EA,#A855F7 55%,#C084FC);color:#fff;font-weight:800;font-size:18px;padding:18px 36px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 0 50px rgba(168,85,247,.45);animation:pulseCTA 2s infinite;text-decoration:none;border:none;cursor:pointer}
-@keyframes pulseCTA{0%,100%{box-shadow:0 0 50px rgba(168,85,247,.45)}50%{box-shadow:0 0 70px rgba(168,85,247,.7)}}
-.vagas-bar{height:8px;background:#27272A;border-radius:999px;overflow:hidden}
-.vagas-fill{height:100%;background:linear-gradient(90deg,#A855F7,#EC4899);width:87%}
-.section{max-width:1160px;margin:0 auto;padding:80px 24px}
-.gradient-text{background:linear-gradient(96deg,#C084FC,#A855F7 55%,#F0ABFC);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-@keyframes pulse{50%{opacity:.5}}
+:root{--v1:#6D28D9;--v2:#5B21B6;--v3:#2A0E5C;--v4:#4C1D95;--lil:#D8C6FF;--cr:#F3E8FF;--ink:#1E0B47;--pk:#C8176F;--y:#FFE14D;--g:#22E07A;--m:#F4ECFF}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;padding-bottom:84px;overflow-x:hidden;font:500 19px/1.55 'Bricolage Grotesque',system-ui,sans-serif;color:#fff;background:var(--v2)}
+h1,h2,h3,p,ul,ol,figure{margin:0}
+h1,h2,h3{font-weight:800;line-height:1.05;letter-spacing:-.02em}
+h2{font-size:clamp(31px,5.6vw,50px);margin-bottom:16px}
+h3{font-size:23px;line-height:1.15}
+.w{max-width:1040px;margin:0 auto;padding:0 20px}
+.s{padding:80px 0}
+.a{background:var(--v2)}
+.b{background:radial-gradient(circle at 15% 0,rgba(255,79,163,.4),transparent 45%),var(--v1)}
+.c{background:var(--v4)}
+.d{background:linear-gradient(165deg,#A3156B,#6D28D9 70%)}
+.lt{background:var(--lil)}
+.lt,.of,.bn,.ye{--m:#3A2570;color:var(--ink)}
+.m{color:var(--m)}
+.g{display:flex;flex-wrap:wrap;gap:36px;align-items:center}
+.g>*{flex:1 1 300px}
+.bf{background:var(--v3);color:var(--y);text-align:center;font-weight:800;font-size:15px;padding:10px 12px}
+.hero{background:radial-gradient(circle at 88% 8%,rgba(255,225,77,.25),transparent 38%),linear-gradient(135deg,#C8176F,#7C3AED 58%,#5B21B6)}
+.hero h1{font-size:clamp(41px,8.8vw,78px);letter-spacing:-.03em;margin:0 0 18px}
+mark{background:var(--y);color:var(--ink);padding:0 .14em;border-radius:8px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.sub{font-size:clamp(18px,3vw,22px)}
+.fl{display:inline-block;background:var(--y);color:var(--ink);font-weight:800;font-size:15px;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+.btn{display:block;text-align:center;background:var(--g);color:#052E16;font-weight:800;font-size:clamp(18px,3.8vw,23px);padding:20px 24px;border-radius:16px;text-decoration:none;box-shadow:0 7px 0 #0B8A47,0 18px 30px rgba(30,11,71,.35);animation:pu 2.2s ease-in-out infinite}
+.btn:hover{background:#4DF09A}
+.btn:focus-visible,summary:focus-visible,.ar button:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 7px #fff}
+@keyframes pu{50%{transform:scale(1.03)}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips span{background:rgba(30,11,71,.4);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:6px 14px;font-weight:700;font-size:15px}
+.fr{position:relative}
+.ai{position:absolute;left:14px;top:14px;z-index:2;background:var(--y);color:var(--ink);font-weight:800;font-size:14px;padding:6px 12px;border-radius:999px}
+.pb{position:absolute;right:-6px;bottom:24px;z-index:2;background:var(--g);color:#052E16;border-radius:18px;padding:10px 16px;transform:rotate(-4deg);line-height:1.1;box-shadow:0 10px 24px rgba(30,11,71,.4)}
+.pb small{display:block;font-weight:700;font-size:13px}
+.pb b{font-size:28px}
+.ph{position:relative;overflow:hidden;border-radius:30px;background:rgba(30,11,71,.45);border:2px dashed rgba(255,255,255,.65);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;font-weight:800;font-size:16px}
+.ph img,.ph video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
+.tr>*{border-top:5px solid var(--y);padding-top:18px}
+.cp{display:flex;flex-wrap:wrap;gap:18px;margin-top:32px}
+.cp>div{flex:1 1 280px;border-radius:24px;padding:28px 24px}
+.cp small{display:block;font-weight:700;font-size:16px}
+.cp strong{display:block;font-size:clamp(46px,10vw,68px);line-height:1.05;font-weight:800;margin:6px 0}
+.no{background:rgba(30,11,71,.55)}
+.no strong{color:#FFB3D9}
+.ye{background:var(--cr);border:4px solid var(--g)}
+.ye strong{color:var(--pk)}
+.st{list-style:none;padding:0;margin-top:30px;counter-reset:n}
+.st li{position:relative;margin-left:22px;padding:0 0 30px 44px;border-left:3px solid #B393EE}
+.st li:last-child{border-color:transparent}
+.st li::before{content:counter(n);counter-increment:n;position:absolute;left:-24px;top:-4px;width:45px;height:45px;border-radius:50%;background:linear-gradient(135deg,#C8176F,#6D28D9);color:#fff;font-weight:800;display:grid;place-items:center}
+.st b{display:block;font-size:22px;line-height:1.2}
+.hd{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px}
+.ar{display:flex;gap:10px}
+.ar button{width:48px;height:48px;border-radius:50%;border:0;background:var(--y);color:var(--ink);font-family:inherit;font-size:28px;font-weight:800;line-height:1;cursor:pointer}
+.sl{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin:28px -20px 0;padding:4px 20px 16px}
+.dp{flex:0 0 min(78%,290px);scroll-snap-align:start}
+.dp figcaption{padding:12px 4px 0;font-weight:800}
+.bn{background:var(--cr);border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 18px 40px rgba(30,11,71,.4)}
+.bh{background:var(--ink);color:var(--y);display:flex;justify-content:space-between;padding:12px 20px;font-weight:800}
+.bh s{color:#FFB3D9;font-weight:700}
+.bb{padding:22px 20px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.pr{margin-top:auto;font-weight:800;color:#0B6B37}
+.of{background:var(--cr);border-radius:30px;padding:36px 24px;text-align:center;box-shadow:0 30px 70px rgba(20,6,60,.5)}
+.tm{display:flex;gap:10px;justify-content:center;margin:20px 0}
+.tm div{background:var(--ink);color:var(--y);border-radius:14px;padding:10px 6px;min-width:66px}
+.tm b{display:block;font-size:34px;line-height:1}
+.tm small{font-size:13px;color:#fff}
+.ck{list-style:none;padding:0;margin:0 0 22px;text-align:left}
+.ck li{position:relative;padding:9px 0 9px 32px;border-bottom:1px solid #D9C5F5}
+.ck li::before{content:'✓';position:absolute;left:4px;color:#0B6B37;font-weight:800}
+.ck s{color:#B3145F}
+.pc{font-size:clamp(60px,15vw,92px);font-weight:800;line-height:1;color:var(--pk);margin:6px 0}
+.gr{display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:center;max-width:780px}
+.bd{width:150px;height:150px;flex:none;border-radius:50%;background:linear-gradient(135deg,#C8176F,#6D28D9);color:#fff;display:grid;place-items:center;text-align:center;font-weight:800;font-size:46px;line-height:1;box-shadow:0 14px 30px rgba(30,11,71,.35)}
+.bd small{display:block;font-size:20px}
+details{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:16px;padding:18px 20px;margin-bottom:12px}
+summary{font-weight:800;cursor:pointer;font-size:19px}
+summary::marker{color:var(--y)}
+details p{margin-top:10px;color:#fff}
+.ft{background:var(--v3);color:#D9CCF5;font-size:13px;padding:32px 0;text-align:center}
+.ft p+p{margin-top:12px}
+.sk{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--v3);box-shadow:0 -8px 24px rgba(20,6,60,.4);padding:10px 16px;display:flex;align-items:center;justify-content:center;gap:14px;transform:translateY(110%);transition:transform .3s}
+.sk.on{transform:none}
+.sk div{display:flex;flex-direction:column;line-height:1.1}
+.sk small{font-weight:700;font-size:13px}
+.sk b{font-size:25px;color:var(--y)}
+.sk .btn{flex:1;max-width:340px;padding:14px;font-size:17px;box-shadow:0 4px 0 #0B8A47;animation:none}
+.js .rv{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .rv.xl{transform:translateX(-56px)}
+.js .rv.xr{transform:translateX(56px)}
+.js .rv.in{opacity:1;transform:none}
+.rv:nth-child(2){transition-delay:.12s}.rv:nth-child(3){transition-delay:.24s}.rv:nth-child(4){transition-delay:.36s}.rv:nth-child(5){transition-delay:.48s}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1!important;transform:none!important;transition:none!important}.btn{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<div class="urgency-bar">🚨 ATENÇÃO: HOJE É O ÚLTIMO DIA! Oferta expira à meia-noite <span style="background:#fff;color:#9333EA;padding:2px 8px;border-radius:999px;font-size:10px">ENCERRA HOJE</span></div>
-<div class="timer-wrap"><div style="font-size:11px;letter-spacing:.15em;color:#A855F7;font-weight:700">EXPIRA EM:</div><div class="timer"><div class="timer-box"><b id="h">08</b><span>HORAS</span></div><div class="timer-box"><b id="m">42</b><span>MIN</span></div><div class="timer-box"><b id="s">19</b><span>SEG</span></div></div><div style="width:1px;height:24px;background:rgba(168,85,247,.2)"></div><div style="font-size:11px"><span style="color:#F87171;font-weight:800">13 VAGAS</span> RESTANTES</div></div>
 
-<div id="root">
-<section class="section" style="text-align:center;padding-top:40px">
-<div class="reveal active">
-<div style="display:inline-flex;align-items:center;gap:8px;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.3);padding:6px 14px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.12em;color:#C084FC;margin-bottom:20px"><span style="width:8px;height:8px;background:#22C55E;border-radius:50%;display:inline-block;animation:pulse 1s infinite"></span> AO VIVO HOJE - ULTIMAS VAGAS</div>
-<h1 style="font-size:clamp(32px,6vw,68px);font-weight:900;line-height:.9;letter-spacing:-.04em">PROTOCOLO<br><span class="gradient-text">MUSA INFINITA</span></h1>
-<p style="color:#A1A1AA;margin-top:20px;max-width:600px;margin:0 auto;margin-top:20px">[SEU TEXTO ORIGINAL AQUI - NÃO ALTEREI]</p>
-<div style="margin:40px auto;max-width:860px;border-radius:24px;overflow:hidden;border:1px solid rgba(168,85,247,.3);box-shadow:0 0 80px rgba(168,85,247,.25);background:#18181B;aspect-ratio:16/9;position:relative">
-<iframe id="vimeo-player" src="" style="width:100%;height:100%;border:0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-<div style="position:absolute;bottom:8px;left:8px;background:rgba(0,0,0,.8);padding:4px 8px;border-radius:6px;font-size:10px">VIDEO LINK: LINK_DA_VIMEO_AQUI</div>
-</div>
-<a href="#checkout" class="cta-button">QUERO GARANTIR MINHA VAGA HOJE →</a>
-</div>
-</section>
+<div class="bf">Black Friday: a oferta termina em <span class="cd">--:--:--</span></div>
 
-<section class="section" style="background:radial-gradient(ellipse at center,rgba(168,85,247,.06),transparent 70%)">
-<div class="reveal" style="text-align:center;margin-bottom:40px">
-<div class="bonus-badge">🎁 BONUS EXCLUSIVOS - SO HOJE</div>
-<h2 style="font-size:42px;font-weight:900">BONUS QUE VOCE LEVA<br><span class="gradient-text">SOMENTE HOJE</span></h2>
-<p style="color:#A1A1AA;margin-top:12px">Se deixar para amanha, perde todos esses bonus</p>
+<header class="hero s" style="padding-top:52px"><div class="w g">
+<div class="rv xl">
+<span class="fl">Black Friday: Protocolo Musa Infinita</span>
+<h1>Pareço real, mas sou <mark>só IA feita no Gemini</mark></h1>
+<p class="sub">Enquanto te ensinam a pagar US$ 79 por mês no Higgsfield, eu te ensino a criar a sua própria musa do zero no <b>Gemini que você já tem no celular</b>. E tem promoção: <b>R$ 10 por 3 meses*</b>.</p>
+<div style="margin-top:30px"><a class="btn" data-ck href="#oferta">Quero criar minha musa por R$ 19,90</a></div>
+<div class="chips"><span>Acesso imediato</span><span>Pagamento único</span><span>Garantia de 7 dias</span></div>
 </div>
-<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
-<div class="bonus-card reveal delay-1">
-<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><span class="bonus-badge">BONUS #1</span><span class="bonus-value">R$197 → GRATIS HOJE</span></div>
-<img data-github="bonus1.png" style="width:100%;height:160px;object-fit:cover;border-radius:16px;margin:16px 0;background:#27272A" alt="bonus"/>
-<h3 style="font-weight:800;font-size:18px">[Seu texto de bonus original]</h3>
-<div style="margin-top:14px;color:#F87171;font-size:11px;font-weight:700">⏰ DISPONIVEL SO ATE HOJE 23:59</div>
+<div class="rv xr fr">
+<div class="ph" style="aspect-ratio:4/5"><span>Cole o link da foto (FOTO_HERO)<br>ou do vídeo (VIDEO) no CONFIG</span><img data-src="FOTO_HERO" alt="Musa criada com IA no Gemini"><video data-src="VIDEO" controls playsinline preload="metadata"></video></div>
+<span class="ai">100% IA, feita no Gemini</span>
+<div class="pb"><small>Black Friday</small><b>R$ 19,90</b></div>
 </div>
-<div class="bonus-card reveal delay-2">
-<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><span class="bonus-badge" style="background:linear-gradient(90deg,#F59E0B,#EC4899)">BONUS #2 - MAIS DESEJADO</span><span class="bonus-value">R$297 → GRATIS HOJE</span></div>
-<img data-github="bonus2.png" style="width:100%;height:160px;object-fit:cover;border-radius:16px;margin:16px 0;background:#27272A" alt="bonus"/>
-<h3 style="font-weight:800;font-size:18px">[Seu texto de bonus original]</h3>
-<div style="margin-top:14px;color:#F87171;font-size:11px;font-weight:700">🔥 87% DAS ALUNAS PEGARAM ESSE</div>
-</div>
-<div class="bonus-card reveal delay-3">
-<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><span class="bonus-badge">BONUS #3</span><span class="bonus-value">R$147 → GRATIS HOJE</span></div>
-<img data-github="bonus3.png" style="width:100%;height:160px;object-fit:cover;border-radius:16px;margin:16px 0;background:#27272A" alt="bonus"/>
-<h3 style="font-weight:800;font-size:18px">[Seu texto de bonus original]</h3>
-<div style="margin-top:14px;color:#F87171;font-size:11px;font-weight:700">⏰ SOME A MEIA-NOITE</div>
-</div>
-</div>
-</section>
+</div></header>
 
-<section id="checkout" class="section" style="text-align:center">
-<div class="reveal" style="background:#18181B;border:1px solid rgba(168,85,247,.4);border-radius:32px;padding:48px 28px;max-width:700px;margin:0 auto;box-shadow:0 0 80px rgba(168,85,247,.15)">
-<div style="background:#F87171;color:#fff;display:inline-block;padding:6px 14px;border-radius:999px;font-weight:800;font-size:12px;animation:pulse 1s infinite">🚨 ULTIMO DIA - ENCERRA HOJE A MEIA-NOITE</div>
-<h2 style="font-size:36px;font-weight:900;margin-top:16px">Ultima chamada</h2>
-<div style="margin:20px 0"><div style="display:flex;justify-content:space-between;font-size:12px;color:#A1A1AA;margin-bottom:8px"><span>Vagas preenchidas</span><span style="color:#A855F7;font-weight:800">87%</span></div><div class="vagas-bar"><div class="vagas-fill"></div></div></div>
-<a href="#" class="cta-button" style="width:100%;margin-top:10px">SIM, QUERO GARANTIR AGORA - ULTIMO DIA</a>
-<p style="font-size:11px;color:#71717A;margin-top:12px">Oferta valida so ate hoje 23:59</p>
+<section class="s a"><div class="w">
+<div class="rv"><h2>Eu não vendo musa pronta.<br>Eu te ensino a criar a sua.</h2>
+<p class="m" style="max-width:620px">Musa pronta todo mundo repete. A sua, criada do zero, é só sua, e você cria quantas quiser.</p></div>
+<div class="g tr" style="margin-top:38px;align-items:stretch">
+<div class="rv xl"><h3>Sem ferramenta cara</h3><p class="m" style="margin-top:8px">Nada de assinatura de US$ 79 por mês. Você usa o Gemini que já está no seu celular.</p></div>
+<div class="rv"><h3>Sua, do zero</h3><p class="m" style="margin-top:8px">Rosto, estilo e personalidade criados por você. Sem personagem repetido por aí.</p></div>
+<div class="rv xr"><h3>Infinita</h3><p class="m" style="margin-top:8px">Aprendeu o protocolo, cria outras musas quando quiser, sem pagar de novo.</p></div>
 </div>
-</section>
-</div>
+</div></section>
 
-<div style="position:fixed;bottom:0;left:0;right:0;background:rgba(15,15,18,.95);backdrop-filter:blur(20px);border-top:1px solid rgba(168,85,247,.3);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:99">
-<div><div style="font-size:11px;color:#A1A1AA">ENCERRA HOJE</div><div style="font-weight:800;font-size:14px;color:#fff">R$27 <span style="text-decoration:line-through;color:#71717A;font-size:11px">R$197</span></div></div>
-<a href="#checkout" class="cta-button" style="padding:12px 20px;font-size:14px;flex:1;max-width:260px">GARANTIR AGORA</a>
+<section class="s b"><div class="w">
+<h2 class="rv">Faça a conta</h2>
+<div class="cp">
+<div class="no rv xl"><small>Assinatura de ferramenta (ex.: Higgsfield)</small><strong>US$ 79</strong><p>por mês, o que dá US$ 948 em 12 meses.</p></div>
+<div class="ye rv xr"><small>Protocolo Musa Infinita</small><strong>R$ 19,90</strong><p class="m">pagamento único, na Black Friday, com 3 bônus.</p></div>
 </div>
+<p class="m rv" style="margin-top:22px">Pra criar vídeo, o Gemini pede plano pago: o Bônus 2 mostra a promoção do Google AI Plus*.</p>
+</div></section>
+
+<section class="s lt"><div class="w" style="max-width:760px">
+<h2 class="rv">O que tem dentro do Protocolo</h2>
+<ol class="st">
+<li class="rv xl"><b>Crie o rosto</b><span class="m">Como criar o rosto e a identidade da sua musa do zero no Gemini.</span></li>
+<li class="rv xr"><b>Mantenha a mesma musa</b><span class="m">Como manter a mesma musa em fotos e cenários diferentes.</span></li>
+<li class="rv xl"><b>Faça tudo pelo celular</b><span class="m">Todo o processo roda no app do Gemini, sem programa caro.</span></li>
+<li class="rv xr"><b>Coloque em movimento</b><span class="m">Como liberar o vídeo e animar a sua musa.</span></li>
+<li class="rv xl"><b>Use para vender</b><span class="m">Como aplicar a musa no conteúdo orgânico e nos anúncios.</span></li>
+</ol>
+</div></section>
+
+<section class="s c"><div class="w">
+<div class="hd rv"><div><h2>O que estão dizendo</h2><p class="m">Deslize e veja os 5 depoimentos.</p></div><div class="ar"><button aria-label="Anterior" data-sl="-1">‹</button><button aria-label="Próximo" data-sl="1">›</button></div></div>
+<div class="sl rv" id="sl">
+<figure class="dp"><div class="ph" style="aspect-ratio:3/4"><span>Print do depoimento 1<br>(DEPO_1)</span><img data-src="DEPO_1" loading="lazy" alt="Depoimento de cliente 1"></div><figcaption>Nome do cliente</figcaption></figure>
+<figure class="dp"><div class="ph" style="aspect-ratio:3/4"><span>Print do depoimento 2<br>(DEPO_2)</span><img data-src="DEPO_2" loading="lazy" alt="Depoimento de cliente 2"></div><figcaption>Nome do cliente</figcaption></figure>
+<figure class="dp"><div class="ph" style="aspect-ratio:3/4"><span>Print do depoimento 3<br>(DEPO_3)</span><img data-src="DEPO_3" loading="lazy" alt="Depoimento de cliente 3"></div><figcaption>Nome do cliente</figcaption></figure>
+<figure class="dp"><div class="ph" style="aspect-ratio:3/4"><span>Print do depoimento 4<br>(DEPO_4)</span><img data-src="DEPO_4" loading="lazy" alt="Depoimento de cliente 4"></div><figcaption>Nome do cliente</figcaption></figure>
+<figure class="dp"><div class="ph" style="aspect-ratio:3/4"><span>Print do depoimento 5<br>(DEPO_5)</span><img data-src="DEPO_5" loading="lazy" alt="Depoimento de cliente 5"></div><figcaption>Nome do cliente</figcaption></figure>
+</div>
+</div></section>
+
+<section class="s d"><div class="w">
+<div class="rv"><h2>3 bônus grátis na Black Friday</h2><p class="m" style="margin-bottom:30px">Somam R$ 291 e vêm no mesmo acesso.</p></div>
+<div class="g" style="align-items:stretch">
+<article class="bn rv xl"><div class="bh"><b>Bônus 1</b><s>valor R$ 97</s></div><div class="bb"><h3>10 Formatos Criativos que Mais Escalam no Tráfego Pago</h3><p class="m">Os criativos que mais vendem no Facebook, prontos pra você aplicar na modelo que você criar.</p><p class="pr">Grátis na Black Friday</p></div></article>
+<article class="bn rv"><div class="bh"><b>Bônus 2</b><s>valor R$ 127</s></div><div class="bb"><h3>Como Ativar o Google AI Plus por Menos de R$ 10 por 1 Ano*</h3><p class="m">O passo a passo pra liberar vídeo no Gemini. Sem isso você cria só foto. Mostro onde fica a ativação de R$ 10 que quase ninguém comenta.</p><p class="pr">Grátis na Black Friday</p></div></article>
+<article class="bn rv xr"><div class="bh"><b>Bônus 3</b><s>valor R$ 67</s></div><div class="bb"><h3>10 Prompts Prontos de Musa Influencer no Shopping / Lifestyle</h3><p class="m">Musa passando no shopping, tomando café, provando roupa, selfie no espelho. Perfeito pro tráfego orgânico no Reels e no TikTok.</p><p class="pr">Grátis na Black Friday</p></div></article>
+</div>
+</div></section>
+
+<section id="oferta" class="s b"><div class="w" style="max-width:600px">
+<div class="of rv">
+<span class="fl">Oferta Black Friday</span>
+<h2>Protocolo Musa Infinita + 3 bônus</h2>
+<div class="tm" aria-label="Tempo restante da oferta"><div><b data-t="d">00</b><small>dias</small></div><div><b data-t="h">00</b><small>horas</small></div><div><b data-t="m">00</b><small>min</small></div><div><b data-t="s">00</b><small>seg</small></div></div>
+<ul class="ck"><li>Protocolo Musa Infinita, acesso completo</li><li>Bônus 1: 10 Formatos Criativos <s>R$ 97</s></li><li>Bônus 2: Google AI Plus por menos de R$ 10* <s>R$ 127</s></li><li>Bônus 3: 10 Prompts de Musa Lifestyle <s>R$ 67</s></li></ul>
+<p class="m">Os bônus somam R$ 291. Na Black Friday você paga só</p>
+<div class="pc">R$ 19,90</div>
+<p class="m" style="margin-bottom:24px">pagamento único, acesso imediato</p>
+<a class="btn" data-ck href="#oferta">Quero meu acesso agora</a>
+<p class="m" style="margin-top:18px;font-size:16px">Compra segura pela Kiwify. Garantia de 7 dias.</p>
+</div>
+</div></section>
+
+<section class="s lt"><div class="w gr rv">
+<div class="bd"><span>7<small>dias</small></span></div>
+<div style="flex:1 1 300px"><h2>Risco zero por 7 dias</h2><p class="m">Entra, assiste e aplica. Se não for pra você, peça o reembolso dentro de 7 dias pela Kiwify e devolvemos 100% do valor. Sem burocracia.</p></div>
+</div></section>
+
+<section class="s a"><div class="w" style="max-width:720px">
+<h2 class="rv">Perguntas rápidas</h2>
+<div class="rv" style="margin-top:24px">
+<details><summary>Vem musa pronta?</summary><p>Não. Você aprende a criar a sua do zero, com o seu estilo.</p></details>
+<details><summary>Preciso pagar o Gemini?</summary><p>Pra criar fotos, você começa com o Gemini do celular. Pra criar vídeo é preciso um plano pago, e o Bônus 2 mostra como liberar pela promoção do Google AI Plus*.</p></details>
+<details><summary>Funciona no celular?</summary><p>Sim. Todo o processo é feito pelo app do Gemini.</p></details>
+<details><summary>Como recebo o acesso?</summary><p>Na hora, por e-mail, assim que o pagamento for aprovado na Kiwify.</p></details>
+<details><summary>Posso usar o rosto de uma pessoa real?</summary><p>Não. O método é para criar personagens 100% originais. Siga as regras de cada rede e identifique o conteúdo feito por IA quando exigido.</p></details>
+</div>
+</div></section>
+
+<section class="s hero" style="text-align:center"><div class="w" style="max-width:720px">
+<div class="rv"><h2>Sua musa começa hoje</h2><p class="sub" style="margin-bottom:28px">O preço da Black Friday termina em <b class="cd">--:--:--</b>.</p></div>
+<div class="rv"><a class="btn" data-ck href="#oferta">Quero o Protocolo por R$ 19,90</a></div>
+</div></section>
+
+<footer class="ft"><div class="w">
+<p>*Promoções do Google (como o Google AI Plus a R$ 10) dependem de disponibilidade, região e condições vigentes e podem mudar; confira no site oficial. Valores de ferramentas de terceiros (ex.: Higgsfield) são citados como referência e podem variar. Este produto ensina a criar personagens fictícios com IA; não vendemos musa pronta e não garantimos resultados financeiros, que dependem da aplicação de cada pessoa. Este site não é afiliado ao Google, à Meta, ao Facebook ou ao Instagram. Todas as marcas pertencem aos seus donos.</p>
+<p>© [NOME DA EMPRESA / CNPJ] · [CONTATO] · [POLÍTICA DE PRIVACIDADE]</p>
+</div></footer>
+
+<div class="sk" id="sk"><div><small>Black Friday</small><b>R$ 19,90</b></div><a class="btn" data-ck href="#oferta">Quero meu acesso</a></div>
 
 <script>
-document.getElementById('vimeo-player').src = CONFIG.VIMEO_VIDEO_LINK;
-document.querySelectorAll('img[data-github]').forEach(img=>{
-  const file = img.getAttribute('data-github');
-  const base = CONFIG.GITHUB_IMAGES_BASE.replace(/\/$/,'');
-  if(base.includes('LINK_DA_GITHUB')){ img.alt = 'Troque LINK_DA_GITHUB_AQUI por seu link'; return; }
-  img.src = base + '/' + file;
-});
-function updateTimer(){
-  const now=new Date(); const end=new Date(); end.setHours(23,59,59,999);
-  let diff=end-now; if(diff<0) diff=0;
-  const h=Math.floor(diff/3600000); const m=Math.floor((diff%3600000)/60000); const s=Math.floor((diff%60000)/1000);
-  document.getElementById('h').textContent=String(h).padStart(2,'0');
-  document.getElementById('m').textContent=String(m).padStart(2,'0');
-  document.getElementById('s').textContent=String(s).padStart(2,'0');
-}
-setInterval(updateTimer,1000); updateTimer();
-const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active')}})},{threshold:0.15});
-document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>observer.observe(el));
+const $=s=>[...document.querySelectorAll(s)],ok=v=>v&&!/COLE_AQUI/.test(v);
+/* Pixel da Meta: só liga quando você cola o ID no CONFIG */
+if(ok(CONFIG.PIXEL_META)){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',CONFIG.PIXEL_META);fbq('track','PageView');fbq('track','ViewContent')}
+/* Utmify: pixel + script de UTMs (confira com o código do seu painel) */
+if(ok(CONFIG.PIXEL_UTMIFY)){window.pixelId=CONFIG.PIXEL_UTMIFY;[['pixel/pixel.js',0],['utms/latest.js',1]].forEach(([f,u])=>{const s=document.createElement('script');s.async=s.defer=true;s.src='https://cdn.utmify.com.br/scripts/'+f;if(u){s.dataset.utmifyPreventXcodSck='';s.dataset.utmifyPreventSubids=''}document.head.appendChild(s)})}
+/* Checkout (repassa as UTMs do anúncio) */
+const q=location.search.slice(1),c=CONFIG.CHECKOUT,url=ok(c)?c+(q?(c.includes('?')?'&':'?')+q:''):'#oferta';
+$('[data-ck]').forEach(a=>{a.href=url;a.addEventListener('click',()=>window.fbq&&fbq('track','InitiateCheckout'))});
+/* Fotos e vídeo: o que não tiver link some e o aviso aparece */
+$('[data-src]').forEach(e=>{const u=CONFIG[e.dataset.src];ok(u)?e.src=u:e.remove()});
+/* Contagem regressiva até FIM_OFERTA */
+const fim=new Date(CONFIG.FIM_OFERTA).getTime(),p=n=>String(n).padStart(2,'0');
+function tick(){const t=Math.max(0,Math.floor((fim-Date.now())/1000))||0,v={d:Math.floor(t/86400),h:Math.floor(t%86400/3600),m:Math.floor(t%3600/60),s:t%60};
+$('.cd').forEach(e=>e.textContent=(v.d?v.d+'d ':'')+p(v.h)+':'+p(v.m)+':'+p(v.s));
+$('[data-t]').forEach(e=>e.textContent=p(v[e.dataset.t]))}
+tick();setInterval(tick,1000);
+/* Blocos entrando ao rolar */
+const R=$('.rv');
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});R.forEach(e=>io.observe(e))}else R.forEach(e=>e.classList.add('in'));
+/* Setas do carrossel e barra fixa de compra */
+$('[data-sl]').forEach(b=>b.onclick=()=>document.getElementById('sl').scrollBy({left:b.dataset.sl*300,behavior:'smooth'}));
+const sk=document.getElementById('sk');addEventListener('scroll',()=>sk.classList.toggle('on',scrollY>520),{passive:true});
 </script>
 </body>
 </html>
